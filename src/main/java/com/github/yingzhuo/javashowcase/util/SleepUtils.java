@@ -15,7 +15,7 @@ public abstract class SleepUtils {
         }
     }
 
-    public static void sleepInRandomSeconds(int max) {
+    public static void sleepRandomSeconds(int max) {
         if (max <= 0) {
             return;
         }

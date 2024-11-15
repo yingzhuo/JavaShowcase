@@ -20,7 +20,7 @@ public class DeadlockDemo {
 
         var r1 = (Runnable) () -> {
             synchronized (MONITOR_1) {
-                SleepUtils.sleepInRandomSeconds(3);
+                SleepUtils.sleepRandomSeconds(3);
                 synchronized (MONITOR_2) {
                     System.out.println(Thread.currentThread() + " working...");
                 }
@@ -29,7 +29,7 @@ public class DeadlockDemo {
 
         var r2 = (Runnable) () -> {
             synchronized (MONITOR_2) {
-                SleepUtils.sleepInRandomSeconds(3);
+                SleepUtils.sleepRandomSeconds(3);
                 synchronized (MONITOR_1) {
                     System.out.println(Thread.currentThread() + " working...");
                 }

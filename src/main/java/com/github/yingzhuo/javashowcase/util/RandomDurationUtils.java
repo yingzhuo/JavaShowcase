@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.Random;
 
 /**
+ * 内部工具
+ *
  * @author 应卓
  */
 public abstract class RandomDurationUtils {
