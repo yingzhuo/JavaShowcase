@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.yingzhuo'
+version '0.0.0'
+
+repositories {
+    mavenLocal()
+    maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
+    maven { name '阿里云(Spring)'; url 'https://maven.aliyun.com/repository/spring/' }
+    maven { name 'Spring(GA)'; url 'https://repo.spring.io/release' }
+    maven { name 'Spring(Milestone)'; url 'https://repo.spring.io/milestone' }
+    maven { name 'Spring(Snapshot)'; url 'https://repo.spring.io/snapshot' }
+    mavenCentral()
+    google()
+}
+
+dependencies {
+
+    // junit
+    testImplementation(libs.jupiter.api)
+    testRuntimeOnly(libs.jupiter.engine)
+
+    // lombok
+    compileOnly(libs.lombok)
+    annotationProcessor(libs.lombok)
+
+}
+
+test {
+    useJUnitPlatform()
+}
