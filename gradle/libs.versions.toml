@@ -10,4 +10,3 @@ lombok = { module = 'org.projectlombok:lombok', version = '1.18.34' }
 [bundles]
 
 [plugins]
-
