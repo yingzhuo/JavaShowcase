@@ -2,42 +2,45 @@ package com.github.yingzhuo.javashowcase.juc;
 
 import com.github.yingzhuo.javashowcase.util.ThreadPoolFactories;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 演示线程之间互相通信
+ * 演示线程之间互相通信 <br>
+ * 启动26个线程，线程依次打印一个英文字母。
  */
-public class SignalDemo1 {
+public class SignalDemo {
     private static final int ASCII_COUNT = 26;
+    private static final char FIRST_ASCII = 'a';
 
     public static void main(String[] args) {
         var threadPool = ThreadPoolFactories.createDefaults();
-        var printer = new SharedPrinter();
 
+        var printer = new SharedPrinter();
         for (int i = 0; i < ASCII_COUNT; i++) {
-            final var index = i;
-            threadPool.execute(() -> printer.print(index));
+            threadPool.execute(new SharedPrinterAction(printer, i));
         }
 
         threadPool.shutdown();
     }
 
+    private record SharedPrinterAction(SharedPrinter printer, int index) implements Runnable {
+        @Override
+        public void run() {
+            printer.print(index);
+        }
+    }
+
     private static class SharedPrinter {
         private final Lock lock = new ReentrantLock();
-        private final List<Condition> conditions;
+        private final Condition[] conditions = new Condition[ASCII_COUNT];
         private int currentIndex = 0;
 
-        public SharedPrinter() {
-            var list = new ArrayList<Condition>();
+        {
             for (int i = 0; i < ASCII_COUNT; i++) {
-                list.add(lock.newCondition());
+                this.conditions[i] = lock.newCondition();
             }
-            this.conditions = Collections.unmodifiableList(list);
         }
 
         public void print(int index) {
@@ -58,7 +61,7 @@ public class SignalDemo1 {
                     }
                 }
 
-                System.out.println((char) ('a' + index));
+                System.out.println(getAsciiToPrint(index));
 
                 incrCurrentIndex();
                 nextCondition.signalAll();
@@ -68,12 +71,16 @@ public class SignalDemo1 {
             }
         }
 
+        private char getAsciiToPrint(int index) {
+            return (char) (FIRST_ASCII + index);
+        }
+
         private Condition getCurrentCondition(int index) {
-            return this.conditions.get(index % conditions.size());
+            return this.conditions[index % ASCII_COUNT];
         }
 
         private Condition getNextCondition(int index) {
-            return this.conditions.get((index + 1) % conditions.size());
+            return this.conditions[(index + 1) % ASCII_COUNT];
         }
 
         private void incrCurrentIndex() {
