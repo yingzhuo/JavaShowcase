@@ -1,4 +1,4 @@
-package com.github.yingzhuo.javashowcase.juc;
+package com.github.yingzhuo.javashowcase.juc.tool;
 
 import com.github.yingzhuo.javashowcase.util.RandomDurationUtils;
 import com.github.yingzhuo.javashowcase.util.SleepUtils;

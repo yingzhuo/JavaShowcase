@@ -3,6 +3,7 @@ usage:
 	@echo "usage (default)      : 显示本菜单"
 	@echo "wrapper              : 初始化GradleWrapper"
 	@echo "compile              : 编译所有文件"
+	@echo "clean                : 清理文件"
 	@echo "github               : 推送文件到Github"
 	@echo "========================================================================================="
 
@@ -12,10 +13,13 @@ wrapper:
 compile:
 	@gradlew classes -x test
 
-github:
+clean:
+	@gradlew clean
+
+github: clean
 	@git status
 	@git add .
 	@git commit -m "$(shell /bin/date "+%F %T")"
 	@git push
 
-.PHONY: usage wrapper compile github
+.PHONY: usage wrapper compile clean github
