@@ -5,11 +5,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public final class ThreadPoolFactories {
-
-    private ThreadPoolFactories() {
-        super();
-    }
+/**
+ * 线程池创建工具
+ *
+ * @author 应卓
+ */
+public abstract class ThreadPoolFactories {
 
     public static ThreadPoolExecutor createDefaults() {
         return new ThreadPoolExecutor(

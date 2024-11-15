@@ -9,6 +9,8 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 演示线程之间互相通信 <br>
  * 启动26个线程，线程依次打印一个英文字母。
+ *
+ * @author 应卓
  */
 public class SignalDemo {
     private static final int ASCII_COUNT = 26;

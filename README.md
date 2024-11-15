@@ -1,3 +1,12 @@
 # Java Showcase
 
-本项目基于Java17
+### 需要
+
+| 软件     | 版本    |
+|--------|-------|
+| JDK    | 17+   |
+| Gradle | 8.10+ |
+
+### 许可证
+
+* [Apache-2.0](./LICENSE.txt)

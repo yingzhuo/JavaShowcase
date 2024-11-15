@@ -2,36 +2,44 @@ package com.github.yingzhuo.javashowcase.juc;
 
 import com.github.yingzhuo.javashowcase.util.SleepUtils;
 
-import java.time.Duration;
+import java.util.concurrent.Executors;
 
 /**
  * 本例子展示死锁
+ *
+ * @author 应卓
  */
 public class DeadlockDemo {
 
-    private static final Object MONITOR1 = new Object();
-    private static final Object MONITOR2 = new Object();
-    private static final Duration SLEEP_3S = Duration.ofSeconds(3L);
+    private static final Object MONITOR_1 = new Object();
+    private static final Object MONITOR_2 = new Object();
 
     public static void main(String[] args) {
 
-        new Thread(() -> {
-            synchronized (MONITOR1) {
-                SleepUtils.sleep(SLEEP_3S);
-                synchronized (MONITOR2) {
-                    System.out.println(Thread.currentThread() + " working...");
-                }
-            }
-        }, "T1").start();
+        var threadPool = Executors.newFixedThreadPool(2);
 
-        new Thread(() -> {
-            synchronized (MONITOR2) {
-                SleepUtils.sleep(SLEEP_3S);
-                synchronized (MONITOR1) {
+        var r1 = (Runnable) () -> {
+            synchronized (MONITOR_1) {
+                SleepUtils.sleepInRandomSeconds(3);
+                synchronized (MONITOR_2) {
                     System.out.println(Thread.currentThread() + " working...");
                 }
             }
-        }, "T2").start();
+        };
+
+        var r2 = (Runnable) () -> {
+            synchronized (MONITOR_2) {
+                SleepUtils.sleepInRandomSeconds(3);
+                synchronized (MONITOR_1) {
+                    System.out.println(Thread.currentThread() + " working...");
+                }
+            }
+        };
+
+        threadPool.execute(r1);
+        threadPool.execute(r2);
+
+        threadPool.shutdown();
     }
 
 }

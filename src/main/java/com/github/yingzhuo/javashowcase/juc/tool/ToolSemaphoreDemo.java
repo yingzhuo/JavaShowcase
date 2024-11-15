@@ -8,6 +8,8 @@ import java.util.concurrent.Semaphore;
 
 /**
  * {@link Semaphore} 使用案例
+ *
+ * @author 应卓
  */
 public class ToolSemaphoreDemo {
 

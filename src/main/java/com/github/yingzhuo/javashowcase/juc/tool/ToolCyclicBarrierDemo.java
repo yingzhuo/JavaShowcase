@@ -9,6 +9,8 @@ import java.util.concurrent.CyclicBarrier;
 
 /**
  * {@link CyclicBarrier} 使用案例
+ *
+ * @author 应卓
  */
 public class ToolCyclicBarrierDemo {
 
