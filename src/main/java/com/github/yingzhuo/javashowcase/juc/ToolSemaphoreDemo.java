@@ -1,10 +1,9 @@
 package com.github.yingzhuo.javashowcase.juc;
 
+import com.github.yingzhuo.javashowcase.util.RandomDurationUtils;
 import com.github.yingzhuo.javashowcase.util.SleepUtils;
 import com.github.yingzhuo.javashowcase.util.ThreadPoolFactories;
 
-import java.time.Duration;
-import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -35,7 +34,7 @@ public class ToolSemaphoreDemo {
             try {
                 semaphore.acquire();
                 System.out.println(carNumber + "号车停入车位");
-                SleepUtils.sleep(Duration.ofSeconds(new Random().nextLong(3L) + 1));
+                SleepUtils.sleep(RandomDurationUtils.randomSeconds(5));
                 System.out.println(carNumber + "号车离开车位");
             } catch (InterruptedException ignored) {
             } finally {
