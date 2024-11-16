@@ -1,4 +1,4 @@
-package com.github.yingzhuo.javashowcase.jvm.heap;
+package com.github.yingzhuo.javashowcase.jvm.stack_and_heap;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -39,6 +39,9 @@ public class OutMemoryErrorDemo {
                 break;
             }
         }
+
+        list.forEach(System.out::println);
+        list.clear();
     }
 
 }
