@@ -20,13 +20,13 @@ public class CompletableFutureDemo1 {
         final var threadPool = ThreadPoolFactories.createDefaults();
         final var countDownLatch = new CountDownLatch(3);
 
-        var f1 = CompletableFuture.supplyAsync(new Slave("饺子"))
+        var f1 = CompletableFuture.supplyAsync(new Slave("饺子"), threadPool)
                 .whenComplete((s, x) -> countDownLatch.countDown());
 
-        var f2 = CompletableFuture.supplyAsync(new Slave("醋"))
+        var f2 = CompletableFuture.supplyAsync(new Slave("醋"), threadPool)
                 .whenComplete((s, x) -> countDownLatch.countDown());
 
-        var f3 = CompletableFuture.supplyAsync(new Slave("蒜泥"))
+        var f3 = CompletableFuture.supplyAsync(new Slave("蒜泥"), threadPool)
                 .whenComplete((s, x) -> countDownLatch.countDown());
 
         try {
