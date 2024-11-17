@@ -26,6 +26,8 @@ dependencies {
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
 
+    // joi
+    implementation(libs.joi)
 }
 
 test {

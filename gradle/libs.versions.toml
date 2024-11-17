@@ -2,10 +2,10 @@
 jupiter = '5.11.3'
 
 [libraries]
+lombok = { module = 'org.projectlombok:lombok', version = '1.18.34' }
 jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'jupiter' }
 jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'jupiter' }
-
-lombok = { module = 'org.projectlombok:lombok', version = '1.18.34' }
+joi = { module = 'org.openjdk.jol:jol-core', version = '0.17' }
 
 [bundles]
 
