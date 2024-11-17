@@ -12,7 +12,7 @@ public class VolatileDemo {
 
     private static final int THREAD_COUNT = 100;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         var adder = new IntAdder();
         var countDownLatch = new CountDownLatch(THREAD_COUNT);
@@ -27,11 +27,7 @@ public class VolatileDemo {
             }).start();
         }
 
-        try {
-            countDownLatch.await();
-        } catch (InterruptedException ignored) {
-        }
-
+        countDownLatch.await();
         System.out.println(adder.get());
     }
 
