@@ -1,12 +1,14 @@
 [versions]
+lombok = '1.18.36'
 jupiter = '5.11.3'
 
 [libraries]
-lombok = { module = 'org.projectlombok:lombok', version = '1.18.34' }
-jupiter-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'jupiter' }
-jupiter-engine = { module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'jupiter' }
+lombok = { module = 'org.projectlombok:lombok', version.ref = 'lombok' }
+junit-api = { module = 'org.junit.jupiter:junit-jupiter-api', version.ref = 'jupiter' }
+junit-engine = { module = 'org.junit.jupiter:junit-jupiter-engine', version.ref = 'jupiter' }
 joi = { module = 'org.openjdk.jol:jol-core', version = '0.17' }
 
 [bundles]
+junit = [ 'junit-api', 'junit-engine' ]
 
 [plugins]

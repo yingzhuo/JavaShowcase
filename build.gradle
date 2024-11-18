@@ -1,9 +1,11 @@
 plugins {
     id 'java'
+    id 'java-library'
 }
 
 group 'com.github.yingzhuo'
-version '0.0.0'
+version '0.1'
+description '个人练习'
 
 repositories {
     mavenLocal()
@@ -13,14 +15,12 @@ repositories {
     maven { name 'Spring(Milestone)'; url 'https://repo.spring.io/milestone' }
     maven { name 'Spring(Snapshot)'; url 'https://repo.spring.io/snapshot' }
     mavenCentral()
-    google()
 }
 
 dependencies {
 
     // junit
-    testImplementation(libs.jupiter.api)
-    testRuntimeOnly(libs.jupiter.engine)
+    testImplementation(libs.bundles.junit)
 
     // lombok
     compileOnly(libs.lombok)
@@ -28,6 +28,13 @@ dependencies {
 
     // joi
     implementation(libs.joi)
+}
+
+java {
+    sourceCompatibility JavaVersion.VERSION_17
+    targetCompatibility JavaVersion.VERSION_17
+    compileJava.options.encoding 'UTF-8'
+    compileTestJava.options.encoding 'UTF-8'
 }
 
 test {
