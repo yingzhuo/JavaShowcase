@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 当前线程睡眠工具
+ *
  * @author 应卓
  */
 public abstract class SleepUtils {
