@@ -1,5 +1,7 @@
 package com.github.yingzhuo.javashowcase.jvm.stack_and_heap;
 
+import com.github.yingzhuo.javashowcase.util.BigData;
+
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -26,12 +28,12 @@ public class OutMemoryErrorDemo {
      */
 
     public static void main(String[] args) {
-        var list = new ArrayList<byte[]>();
+        var list = new ArrayList<BigData>();
 
         while (true) {
             try {
                 TimeUnit.MILLISECONDS.sleep(200);
-                list.add(new byte[1024 * 1024]);
+                list.add(BigData.newInstance());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             } catch (OutOfMemoryError oom) {
