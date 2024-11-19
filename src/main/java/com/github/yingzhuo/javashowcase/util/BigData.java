@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 
 /**
- * 一个超大对象
+ * 超大对象
  *
  * @author 应卓
  */
@@ -15,24 +15,28 @@ public final class BigData implements Serializable {
         return new BigData();
     }
 
-    private static final int SIZE = 1024 * 1024; // 1m
     private static final SecureRandom RANDOM = new SecureRandom();
 
-    private final byte[] data = new byte[SIZE];
+    private final byte[] data = new byte[1024 * 1024];
 
+    /**
+     * 私有构造方法
+     */
     private BigData() {
         RANDOM.nextBytes(this.data);
     }
 
-    public byte[] getData() {
-        return data;
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String toString() {
         return Arrays.toString(data);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,8 +47,12 @@ public final class BigData implements Serializable {
         return Arrays.equals(data, bigData.data);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         return Arrays.hashCode(data);
     }
+
 }

@@ -3,6 +3,8 @@ package com.github.yingzhuo.javashowcase.util;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
+import static com.github.yingzhuo.javashowcase.util.RandomDurationUtils.randomSeconds;
+
 /**
  * 当前线程睡眠工具
  *
@@ -21,7 +23,7 @@ public abstract class SleepUtils {
         if (max <= 0) {
             return;
         }
-        sleep(RandomDurationUtils.randomSeconds(max));
+        sleep(randomSeconds(max));
     }
 
 }
