@@ -5,7 +5,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 
 /**
- * 超大对象
+ * 超大对象 (1MB)
  *
  * @author 应卓
  */
