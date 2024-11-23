@@ -20,7 +20,7 @@ public class ReadWriteLockDemo {
     public static void main(String[] args) {
         var threadPool = ThreadPoolFactories.createDefaults();
 
-        var adder = new IntAdder(new ReentrantReadWriteLock(false));
+        var adder = new IntAdder(new ReentrantReadWriteLock(true));
 
         for (int i = 0; i < 10; i++) {
             threadPool.execute(() -> {
