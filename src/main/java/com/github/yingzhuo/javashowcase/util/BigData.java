@@ -41,9 +41,7 @@ public final class BigData implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
-        BigData bigData = (BigData) o;
-
+        var bigData = (BigData) o;
         return Arrays.equals(data, bigData.data);
     }
 

@@ -28,7 +28,6 @@ public class StringTableDemo {
         var s7 = "bcd";
         var s8 = s7 + "";
         System.out.println(s7 == s8); // false
-
     }
 
 }
