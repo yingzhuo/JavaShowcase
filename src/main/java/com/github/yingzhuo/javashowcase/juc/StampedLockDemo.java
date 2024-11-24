@@ -25,7 +25,6 @@ public class StampedLockDemo {
         }
     }
 
-
     private static class Adder {
         private final StampedLock lock;
         private int n = 0;
@@ -35,29 +34,34 @@ public class StampedLockDemo {
         }
 
         public void incr() {
+            // 写操作只能是悲观锁
             var stamp = lock.writeLock();
 
             try {
                 n++;
             } finally {
-                lock.unlockWrite(stamp);
+                lock.unlock(stamp);
             }
         }
 
         public int getN() {
+            // 首先尝试乐观模式
             var stamp = lock.tryOptimisticRead();
+            int result = this.n;
 
             if (!lock.validate(stamp)) {
+                // 乐观不成功转使用悲观锁
                 stamp = lock.readLock();
 
                 try {
-                    return n;
+                    result = this.n;
+                    return result;
                 } finally {
-                    lock.unlockRead(stamp);
+                    lock.unlock(stamp);
                 }
             }
 
-            return n;
+            return result;
         }
     }
 
