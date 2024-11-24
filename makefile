@@ -9,7 +9,8 @@ usage:
 	@echo "========================================================================================="
 
 wrapper:
-	@gradle wrapper --gradle-distribution-url 'https://mirrors.cloud.tencent.com/gradle/gradle-8.11-bin.zip'
+	@gradle wrapper \
+		--gradle-distribution-url 'https://mirrors.cloud.tencent.com/gradle/gradle-8.11.1-bin.zip'
 
 compile:
 	@gradlew classes -x test
