@@ -17,7 +17,7 @@ public class VeryBigZsetScriptGen {
 
     private static final Random RANDOM = new Random();
 
-    private static final int MAX = 10_0000;
+    private static final int MAX = 500_0000;
     private static final File OUTPUT = new File(String.format("/Users/yingzhuo/临时/redis-bigzset-%d.txt", MAX));
     private static final String KEY = "bigzset";
 

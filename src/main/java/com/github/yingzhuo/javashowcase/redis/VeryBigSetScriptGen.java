@@ -14,7 +14,7 @@ import java.util.UUID;
 @SuppressWarnings("DuplicatedCode")
 public class VeryBigSetScriptGen {
 
-    private static final int MAX = 10_0000;
+    private static final int MAX = 500_0000;
     private static final File OUTPUT = new File(String.format("/Users/yingzhuo/临时/redis-bigset-%d.txt", MAX));
     private static final String KEY = "bigset";
 
