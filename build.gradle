@@ -3,17 +3,17 @@ plugins {
     id 'java-library'
 }
 
-group 'com.github.yingzhuo'
-version '0.1'
-description '个人练习'
+group = 'com.github.yingzhuo'
+version = '0.1'
+description = '个人练习'
 
 repositories {
     mavenLocal()
-    maven { name '阿里云'; url 'https://maven.aliyun.com/repository/public/' }
-    maven { name '阿里云(Spring)'; url 'https://maven.aliyun.com/repository/spring/' }
-    maven { name 'Spring(GA)'; url 'https://repo.spring.io/release' }
-    maven { name 'Spring(Milestone)'; url 'https://repo.spring.io/milestone' }
-    maven { name 'Spring(Snapshot)'; url 'https://repo.spring.io/snapshot' }
+    maven { name = '阿里云'; url = 'https://maven.aliyun.com/repository/public/' }
+    maven { name = '阿里云(Spring)'; url = 'https://maven.aliyun.com/repository/spring/' }
+    maven { name = 'Spring(GA)'; url = 'https://repo.spring.io/release' }
+    maven { name = 'Spring(Milestone)'; url = 'https://repo.spring.io/milestone' }
+    maven { name = 'Spring(Snapshot)'; url = 'https://repo.spring.io/snapshot' }
     mavenCentral()
 }
 
@@ -28,14 +28,18 @@ dependencies {
 
     // joi
     implementation(libs.joi)
+
+    // ouid
+    implementation 'com.fasterxml.uuid:java-uuid-generator:5.1.0'
+    implementation 'com.github.f4b6a3:uuid-creator:6.0.0'
 }
 
 java {
-    sourceCompatibility JavaVersion.VERSION_17
-    targetCompatibility JavaVersion.VERSION_17
-    compileJava.options.encoding 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+    compileJava.options.encoding = 'UTF-8'
     compileJava.options.debugOptions.debugLevel = "source,lines,vars"
-    compileTestJava.options.encoding 'UTF-8'
+    compileTestJava.options.encoding = 'UTF-8'
     compileTestJava.options.debugOptions.debugLevel = "source,lines,vars"
 }
 
